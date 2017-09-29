@@ -7,10 +7,15 @@ public class ToDoApp {
         } else if (args[0].equals("-l")) {
             functions.listTasks();
         } else if (args[0].equals("-a")) {
+            if(args.length == 1)
+            {
+                System.out.println("Unable to add: no task provided!");
+                System.exit(0);
+            }
             functions.addTasks(args[1]);
+
         } else if (args[0].equals("-r")) {
             functions.removeTasks(Integer.parseInt(args[1]));
-
         }
     }
 }

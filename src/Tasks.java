@@ -44,16 +44,16 @@ public class Tasks {
             allToDo = Files.readAllLines(path1);
             allToDo.add("[ ]" + " " + task);
             Files.write(path1, allToDo);
-            if (task.equals(null)){
-                System.out.println("error");
-            }
-        } catch (IOException e) {
-            System.out.println("There is a problem with command");
+
+        } catch (Exception e) {
+            System.out.println("Unable to add: no task provided");
         }
+
     }
     public void removeTasks(int num) {
         Path todoFile = Paths.get(FILE_NAME);
         try {
+
             allToDo = Files.readAllLines(todoFile);
             allToDo.remove(num - 1);
             Files.write(todoFile, allToDo);
