@@ -37,6 +37,7 @@ public class Tasks {
             }
         }
     }
+
     public void addTasks(String task) {
         Path path1 = Paths.get(FILE_NAME);
 
@@ -48,7 +49,6 @@ public class Tasks {
         } catch (Exception e) {
             System.out.println("Unable to add: no task provided");
         }
-
     }
     public void removeTasks(int num) {
         Path todoFile = Paths.get(FILE_NAME);
@@ -57,6 +57,19 @@ public class Tasks {
             allToDo = Files.readAllLines(todoFile);
             allToDo.remove(num - 1);
             Files.write(todoFile, allToDo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void checkTasks(int num) {
+        Path path = Paths.get(FILE_NAME);
+        try {
+            allToDo = Files.readAllLines(path);
+            String temp = allToDo.get(num-1);
+            allToDo.remove(num-1);
+            temp = new StringBuffer(temp).replace(1, 2,"X").toString();
+            allToDo.add(num-1,temp);
+            Files.write(path, allToDo);
         } catch (IOException e) {
             e.printStackTrace();
         }

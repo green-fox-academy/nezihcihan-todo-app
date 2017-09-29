@@ -1,4 +1,4 @@
-[ ] Walk the dog
-[ ] Buy milk
-[ ] Do homework
+[X] Walk the dog
+[X ] Buy milk
+[X ] Do homework
 [ ] Feed The Monkey
