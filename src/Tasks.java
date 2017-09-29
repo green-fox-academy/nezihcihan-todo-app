@@ -53,7 +53,6 @@ public class Tasks {
     public void removeTasks(int num) {
         Path todoFile = Paths.get(FILE_NAME);
         try {
-
             allToDo = Files.readAllLines(todoFile);
             allToDo.remove(num - 1);
             Files.write(todoFile, allToDo);
@@ -64,12 +63,21 @@ public class Tasks {
     public void checkTasks(int num) {
         Path path = Paths.get(FILE_NAME);
         try {
-            allToDo = Files.readAllLines(path);
-            String temp = allToDo.get(num-1);
-            allToDo.remove(num-1);
-            temp = new StringBuffer(temp).replace(1, 2,"X").toString();
-            allToDo.add(num-1,temp);
-            Files.write(path, allToDo);
+            int counter = 0;
+            for (String s : allToDo) {
+                counter++;
+            }
+            if (counter > 2) {
+                allToDo = Files.readAllLines(path);
+                String temp = allToDo.get(num-1);
+                allToDo.remove(num-1);
+                temp = new StringBuffer(temp).replace(1, 2,"X").toString();
+                allToDo.add(num-1,temp);
+                Files.write(path, allToDo);
+            }
+            else {
+                System.out.println("You have less then 2 task, I can't run this command.");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
